@@ -16,7 +16,7 @@ public class Category {
     private String nameCategory;
     private String desription;
 
-    private List<Api> listApi = new ArrayList<>();
+    //private List<Api> listApi = new ArrayList<>();
 
 
 
