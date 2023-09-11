@@ -1,15 +1,10 @@
 package com.example.apimanagerrebuild.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
-@Entity
-public class Organization {
-    @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    Long id;
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public abstract class Organization {
+
 
     private String name;
     private String adress;
