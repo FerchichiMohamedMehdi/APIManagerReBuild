@@ -1,8 +1,6 @@
 package com.example.apimanagerrebuild.models;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -11,6 +9,8 @@ import java.util.List;
 @Getter
 @Setter
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Category {
 
     @Id
@@ -18,7 +18,10 @@ public class Category {
     private Long id;
 
     private String nameCategory;
-    private String desription;
+    private String description;
+
+
+
     @OneToMany(mappedBy = "apiCategory")
     private List<Api> listApi = new ArrayList<>();
 
