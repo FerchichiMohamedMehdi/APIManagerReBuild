@@ -10,11 +10,16 @@ import java.util.List;
 import javax.persistence.*;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 
 
 @Entity
 @Data
+@Getter
+@Setter
 public class Api {
 
     @Id
@@ -30,6 +35,7 @@ public class Api {
     private boolean isDefault;
 
     @CreatedDate
+            @NonNull
     LocalDate date = LocalDate.now(ZoneId.of("Europe/Paris"));
 
     @Enumerated(EnumType.STRING)
@@ -52,8 +58,5 @@ public class Api {
 
     @ManyToMany
     private List<Tag> mesTag= new ArrayList<Tag>();
-
-
-
 
 }

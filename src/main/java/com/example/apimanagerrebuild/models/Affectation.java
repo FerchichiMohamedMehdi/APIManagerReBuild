@@ -1,5 +1,8 @@
 package com.example.apimanagerrebuild.models;
 
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
@@ -9,6 +12,9 @@ import java.util.Date;
 
 
 @Entity
+@Data
+@Getter
+@Setter
 public class Affectation {
 
     @Id
