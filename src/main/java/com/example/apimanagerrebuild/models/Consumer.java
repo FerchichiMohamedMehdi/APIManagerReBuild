@@ -13,11 +13,9 @@ import java.util.List;
 @Data
 @Table(name="consumer")
 public class Consumer extends Organization{
-    @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    Long id;
-    private String ActivitySector;
 
+
+    private String activitySector;
     @OneToMany(mappedBy = "consumer")
     private List<Affectation> listAffectation= new ArrayList<Affectation>();
 
