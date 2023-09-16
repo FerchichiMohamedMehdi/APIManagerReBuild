@@ -22,7 +22,8 @@ public class Category {
 
 
 
-    @OneToMany(mappedBy = "apiCategory")
+
+    @OneToMany(mappedBy = "apiCategory", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Api> listApi = new ArrayList<>();
 
 
