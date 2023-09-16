@@ -9,9 +9,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-@Getter
-@Setter
 @Data
 @MappedSuperclass
 public class Organization implements Serializable {
@@ -25,9 +22,5 @@ public class Organization implements Serializable {
     private String adress;
     private int phone;
     private String mail;
-
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn
-    private List<Consumer> consumer;
 
 }
