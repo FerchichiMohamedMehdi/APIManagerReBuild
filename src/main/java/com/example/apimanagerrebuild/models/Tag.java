@@ -1,8 +1,6 @@
 package com.example.apimanagerrebuild.models;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -12,6 +10,8 @@ import java.util.List;
 @Getter
 @Setter
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Tag {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,4 +23,8 @@ public class Tag {
 
     @ManyToMany(mappedBy = "mesTag")
     private List<Api> listApi = new ArrayList<Api>();
+
+    public Tag(String nameTag) {
+        this.nameTag = nameTag;
+    }
 }

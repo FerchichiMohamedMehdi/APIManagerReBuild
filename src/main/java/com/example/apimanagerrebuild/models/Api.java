@@ -2,6 +2,7 @@ package com.example.apimanagerrebuild.models;
 
 
 
+import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
@@ -14,6 +15,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
+import net.minidev.json.annotate.JsonIgnore;
 import org.springframework.data.annotation.CreatedDate;
 
 
@@ -25,7 +27,7 @@ public class Api {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long idApi;
 
     private String name;
 
@@ -53,17 +55,23 @@ public class Api {
 
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="id_provider", nullable = false)
+    @JoinColumn(name="id", nullable = false)
     private Category apiCategory;
 
     @ManyToOne
-    @JoinColumn(name="id", insertable = false,updatable = false)
+    @JoinColumn(name="id_provider")
     private Provider apiProvider;
 
     @OneToMany(mappedBy = "api")
+    @JsonIgnore
     private List<Affectation> listAffectation= new ArrayList<Affectation>();
 
     @ManyToMany
-    private List<Tag> mesTag= new ArrayList<Tag>();
+    @JoinTable(
+            name="Api_Tag",
+            joinColumns = @JoinColumn(name="idTag"),
+            inverseJoinColumns = @JoinColumn(name="idApi")
+    )
+    private List<Tag> mesTag= new ArrayList<>();
 
 }
