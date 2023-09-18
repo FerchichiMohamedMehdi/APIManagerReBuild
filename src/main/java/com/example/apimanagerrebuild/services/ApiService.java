@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 @Service
@@ -16,7 +17,9 @@ public class ApiService {
     TagService tagService;
 
     public void addApi(Api api){
-        tagService.addTag((ArrayList<Tag>) api.getMesTag());
+        List<Tag> tagToAdd = api.getMesTag();
+        //System.out.println(tagToAdd.toString()+"test");
+        tagService.addTag(tagToAdd);
         apiRepository.save(api);
     }
 }

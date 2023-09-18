@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 
 @Service
 public class TagService {
@@ -15,17 +17,18 @@ public class TagService {
     TagRepositoty tagRepositoty;
     Api api;
 
-    public ArrayList<Tag> getAllTag(){
+    public List<Tag> getAllTag(){
 
-        return (ArrayList<Tag>) tagRepositoty.findAll();
+        return tagRepositoty.findAll();
 
     }
 
 
 
-    public void addTag (ArrayList<Tag> listTagToAdd){
+    public void addTag (List<Tag> listTagToAdd){
 
-        ArrayList<Tag> ExistedTags = this.getAllTag();
+        List<Tag> ExistedTags = this.getAllTag();
+        System.out.println(ExistedTags.toString()+"test");
 
         for (Tag tagToAdd:listTagToAdd){
             for (Tag ExistedTag:ExistedTags){
@@ -39,12 +42,14 @@ public class TagService {
                 }
 
         }
-
-
-
-
-
         }
+    }
+    public void addTag(Tag tag){
+
+    }
+
+    public void addSingleTag(Tag tag){
+        tagRepositoty.save(tag);
     }
 
 }

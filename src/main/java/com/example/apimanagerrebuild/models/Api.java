@@ -6,7 +6,6 @@ import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.prefs.PreferenceChangeEvent;
 import javax.persistence.*;
@@ -66,11 +65,11 @@ public class Api {
     @JsonIgnore
     private List<Affectation> listAffectation= new ArrayList<Affectation>();
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name="Api_Tag",
-            joinColumns = @JoinColumn(name="idTag"),
-            inverseJoinColumns = @JoinColumn(name="idApi")
+            joinColumns = @JoinColumn(name="idApi"),
+            inverseJoinColumns = @JoinColumn(name="idTag")
     )
     private List<Tag> mesTag= new ArrayList<>();
 

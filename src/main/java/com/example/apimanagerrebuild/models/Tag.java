@@ -22,9 +22,11 @@ public class Tag {
     private int occurence=1;
 
     @ManyToMany(mappedBy = "mesTag")
-    private List<Api> listApi = new ArrayList<Api>();
+    private List<Api> listApi = new ArrayList<>();
 
     public Tag(String nameTag) {
         this.nameTag = nameTag;
     }
+
+
 }
