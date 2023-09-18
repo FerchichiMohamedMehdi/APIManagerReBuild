@@ -18,8 +18,9 @@ public class TagService {
     Api api;
 
     public List<Tag> getAllTag(){
+        List<Tag> tags =tagRepositoty.findAll();
 
-        return tagRepositoty.findAll();
+        return tags;
 
     }
 
