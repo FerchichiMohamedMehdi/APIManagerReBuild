@@ -22,7 +22,7 @@ public class Tag {
 
     private int occurence=1;
 
-    @ManyToMany(mappedBy = "mesTag", cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "mesTag", cascade = CascadeType.MERGE)
     @JsonIgnore
     private List<Api> listApi = new ArrayList<>();
 

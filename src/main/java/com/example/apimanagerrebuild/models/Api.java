@@ -3,18 +3,14 @@ package com.example.apimanagerrebuild.models;
 
 
 import java.io.Serializable;
-import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.prefs.PreferenceChangeEvent;
 import javax.persistence.*;
-
 import lombok.*;
 import net.minidev.json.annotate.JsonIgnore;
 import org.springframework.data.annotation.CreatedDate;
-
 
 @Entity
 @Data
@@ -65,7 +61,7 @@ public class Api implements Serializable {
     @JsonIgnore
     private List<Affectation> listAffectation= new ArrayList<Affectation>();
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(
             name="Api_Tag",
             joinColumns = @JoinColumn(name="idApi"),
