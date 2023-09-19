@@ -1,24 +1,22 @@
 package com.example.apimanagerrebuild.services;
 
-import com.example.apimanagerrebuild.models.Api;
 import com.example.apimanagerrebuild.models.Tag;
-import com.example.apimanagerrebuild.repositories.TagRepositoty;
+import com.example.apimanagerrebuild.repositories.TagRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 @Service
 public class TagService {
 
     @Autowired
-    TagRepositoty tagRepositoty;
-    Api api;
+    TagRepository tagRepository;
 
     public List<Tag> getAllTag(){
-        List<Tag> tags =tagRepositoty.findAll();
+        List<Tag> tags = new ArrayList<>();
+        tags= tagRepository.findAll();
 
         return tags;
 
@@ -35,32 +33,31 @@ public class TagService {
             for (Tag ExistedTag:ExistedTags){
                 if(tagToAdd.getNameTag().equalsIgnoreCase(ExistedTag.getNameTag())){
                     ExistedTag.setOccurence(ExistedTag.getOccurence()+1);
-                    tagRepositoty.save(ExistedTag);
+                    tagRepository.save(ExistedTag);
                     break;
                 }
                 else {
-                    tagRepositoty.save(tagToAdd);
+                    tagRepository.save(tagToAdd);
                 }
 
         }
         }
     }
     public void addTag(Tag tagToAdd){
-        List<Tag> ExistedTags = this.getAllTag();
-        for (Tag ExistedTag:ExistedTags){
-            if(tagToAdd.getNameTag().equalsIgnoreCase((ExistedTag.getNameTag()))){
-                ExistedTag.setOccurence(ExistedTag.getOccurence()+1);
-                tagRepositoty.save(ExistedTag);
+        //List<Tag> existedTags = this.getAllTag();
+        /*for (Tag existedTag:existedTags){
+            if(tagToAdd.getNameTag().equalsIgnoreCase((existedTag.getNameTag()))){
+                existedTag.setOccurence(existedTag.getOccurence()+1);
+                tagRepository.save(existedTag);
             }
-            else{
-                tagRepositoty.save(tagToAdd);
-            }
-        }
+            tagRepository.save(tagToAdd);
+        }*/
+        tagRepository.save(tagToAdd);
 
     }
 
     public void addSingleTag(Tag tag){
-        tagRepositoty.save(tag);
+        tagRepository.save(tag);
     }
 
 }

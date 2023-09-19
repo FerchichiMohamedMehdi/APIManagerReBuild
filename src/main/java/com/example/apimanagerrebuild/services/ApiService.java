@@ -17,11 +17,13 @@ public class ApiService {
     TagService tagService;
 
     public void addApi(Api api){
+
         List<Tag> tagToAdd = api.getMesTag();
+        System.out.println(tagToAdd.toString()+"test");
         for (Tag t:tagToAdd){
             tagService.addTag(t);
         }
-        System.out.println(tagToAdd.toString()+"test");
+
 
         apiRepository.save(api);
     }

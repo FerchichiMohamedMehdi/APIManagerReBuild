@@ -2,6 +2,7 @@ package com.example.apimanagerrebuild.models;
 
 
 
+import java.io.Serializable;
 import java.lang.reflect.Array;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -10,10 +11,7 @@ import java.util.List;
 import java.util.prefs.PreferenceChangeEvent;
 import javax.persistence.*;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.NonNull;
-import lombok.Setter;
+import lombok.*;
 import net.minidev.json.annotate.JsonIgnore;
 import org.springframework.data.annotation.CreatedDate;
 
@@ -22,7 +20,9 @@ import org.springframework.data.annotation.CreatedDate;
 @Data
 @Getter
 @Setter
-public class Api {
+@AllArgsConstructor
+@NoArgsConstructor
+public class Api implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

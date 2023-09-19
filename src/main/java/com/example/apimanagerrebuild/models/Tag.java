@@ -1,6 +1,7 @@
 package com.example.apimanagerrebuild.models;
 
 import lombok.*;
+import net.minidev.json.annotate.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -21,13 +22,11 @@ public class Tag {
 
     private int occurence=1;
 
-    @ManyToMany(mappedBy = "mesTag")
+    @ManyToMany(mappedBy = "mesTag", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Api> listApi = new ArrayList<>();
-
 
     public Tag(String nameTag) {
         this.nameTag = nameTag;
     }
-
-
 }
