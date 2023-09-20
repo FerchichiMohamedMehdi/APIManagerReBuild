@@ -24,7 +24,7 @@ public class Tag {
 
     @ManyToOne
     @JoinColumn(name="idApi", nullable = true)
-    Api api;
+    Api monApi;
 
     public Tag(String nameTag) {
         this.nameTag = nameTag;

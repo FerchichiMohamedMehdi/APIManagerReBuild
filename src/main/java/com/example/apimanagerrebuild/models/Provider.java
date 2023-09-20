@@ -15,7 +15,7 @@ import java.util.List;
 public class Provider extends Organization {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    Long id;
+    Long idProvider;
     private int numberOfAuthorisation;
 
     @OneToMany(mappedBy = "apiProvider")

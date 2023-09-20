@@ -22,11 +22,11 @@ public class Affectation {
     private Long idAffectation;
 
     @ManyToOne
-    @JoinColumn(name="id_Api")
-    private Api api;
+    @JoinColumn(name="idApi")
+    private Api monApi;
 
     @ManyToOne
-    @JoinColumn(name="id_consuler")
+    @JoinColumn(name="idConsumer")
     private Consumer consumer;
 
     @CreatedDate

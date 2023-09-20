@@ -38,7 +38,7 @@ public class CategoryService {
     }
 
     public void updateCat(Category c){
-        Category catUpdated = new Category(c.getId(), c.getDescription(), c.getNameCategory(), c.getListApi());
+        Category catUpdated = new Category(c.getIdCategory(), c.getDescription(), c.getNameCategory(), c.getListApi());
         catRepo.save(c);
     }
 

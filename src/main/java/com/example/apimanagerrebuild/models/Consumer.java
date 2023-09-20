@@ -14,9 +14,15 @@ import java.util.List;
 @Table(name="consumer")
 public class Consumer extends Organization{
 
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    Long idConsumer;
 
     private String activitySector;
-    @OneToMany(mappedBy = "consumer")
+
+    @OneToMany(mappedBy = "monApi")
     private List<Affectation> listAffectation= new ArrayList<Affectation>();
+
+
 
 }

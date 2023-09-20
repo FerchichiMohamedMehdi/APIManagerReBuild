@@ -20,10 +20,6 @@ public class ContollerTag {
     public List<Tag> getAllTags() {
         return tagService.getAllTag();
     }
-    @PostMapping("add")
-    public void addSingleTag(@RequestBody Tag tag){
-        tagService.addSingleTag(tag);
-    }
 
 
 

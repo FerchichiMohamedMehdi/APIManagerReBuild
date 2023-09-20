@@ -33,7 +33,7 @@ public class Api implements Serializable {
     private boolean isDefault;
 
     @CreatedDate
-            @NonNull
+    @NonNull
     LocalDate date = LocalDate.now(ZoneId.of("Europe/Paris"));
 
     @Enumerated(EnumType.STRING)
@@ -50,15 +50,14 @@ public class Api implements Serializable {
 
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="id", nullable = false)
+    @JoinColumn(name="idCategory", nullable = false)
     private Category apiCategory;
 
     @ManyToOne
-    @JoinColumn(name="id_provider")
+    @JoinColumn(name="idProvider")
     private Provider apiProvider;
 
-    @OneToMany(mappedBy = "api")
-    @JsonIgnore
+    @OneToMany(mappedBy = "monApi")
     private List<Affectation> listAffectation= new ArrayList<Affectation>();
 
     @OneToMany(mappedBy = "monApi")
