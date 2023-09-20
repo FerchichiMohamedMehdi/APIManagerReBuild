@@ -20,7 +20,7 @@ public class Tag {
 
     private String nameTag;
 
-    private int occurence=1;
+    //private int occurence=1;
 
     @ManyToOne
     @JoinColumn(name="idApi", nullable = true)

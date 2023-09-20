@@ -61,7 +61,7 @@ public class Api implements Serializable {
     @JsonIgnore
     private List<Affectation> listAffectation= new ArrayList<Affectation>();
 
-    @OneToMany
+    @OneToMany(mappedBy = "monApi")
     private List<Tag> mesTag = new ArrayList<>();
 
 }
