@@ -19,12 +19,9 @@ public class ApiService {
     public void addApi(Api api){
 
         List<Tag> tagToAdd = api.getMesTag();
-        System.out.println(tagToAdd.toString()+"test");
         for (Tag t:tagToAdd){
             tagService.addTag(t);
         }
-
-
         apiRepository.save(api);
     }
 }

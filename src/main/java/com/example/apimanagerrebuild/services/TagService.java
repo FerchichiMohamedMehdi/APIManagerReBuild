@@ -24,7 +24,7 @@ public class TagService {
 
 
 
-    public void addTag (List<Tag> listTagToAdd){
+    /*public void addTag (List<Tag> listTagToAdd){
 
         List<Tag> ExistedTags = this.getAllTag();
         System.out.println(ExistedTags.toString()+"test");
@@ -42,22 +42,10 @@ public class TagService {
 
         }
         }
-    }
+    }*/
     public void addTag(Tag tagToAdd){
-        //List<Tag> existedTags = this.getAllTag();
-        /*for (Tag existedTag:existedTags){
-            if(tagToAdd.getNameTag().equalsIgnoreCase((existedTag.getNameTag()))){
-                existedTag.setOccurence(existedTag.getOccurence()+1);
-                tagRepository.save(existedTag);
-            }
-            tagRepository.save(tagToAdd);
-        }*/
         tagRepository.save(tagToAdd);
-
     }
 
-    public void addSingleTag(Tag tag){
-        tagRepository.save(tag);
-    }
 
 }

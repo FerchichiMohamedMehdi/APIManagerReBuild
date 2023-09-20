@@ -61,12 +61,7 @@ public class Api implements Serializable {
     @JsonIgnore
     private List<Affectation> listAffectation= new ArrayList<Affectation>();
 
-    @ManyToMany(cascade = CascadeType.MERGE)
-    @JoinTable(
-            name="Api_Tag",
-            joinColumns = @JoinColumn(name="idApi"),
-            inverseJoinColumns = @JoinColumn(name="idTag")
-    )
-    private List<Tag> mesTag= new ArrayList<>();
+    @OneToMany
+    private List<Tag> mesTag = new ArrayList<>();
 
 }
