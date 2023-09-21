@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import javax.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
@@ -39,9 +40,11 @@ public class Api {
     @Embedded
     private State apiState;
 
-    @Embedded
     @Enumerated(EnumType.STRING)
-    private Method methodApi;
+    @ElementCollection(targetClass = Method.class)
+    @CollectionTable(name = "api_method" , joinColumns = @JoinColumn(name ="idApi"))
+    @Column(name = "method")
+    private Set<Method> methodApi;
 
     @Embedded
     @Enumerated(EnumType.STRING)
