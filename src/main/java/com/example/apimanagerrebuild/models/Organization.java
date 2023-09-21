@@ -14,9 +14,7 @@ import java.util.List;
 public class Organization implements Serializable {
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
-    Long id;
+
 
     private String name;
     private String adress;

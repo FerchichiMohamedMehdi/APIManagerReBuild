@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.*;
 import lombok.*;
-import net.minidev.json.annotate.JsonIgnore;
 import org.springframework.data.annotation.CreatedDate;
 
 @Entity
@@ -18,7 +17,7 @@ import org.springframework.data.annotation.CreatedDate;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Api implements Serializable {
+public class Api {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -49,7 +48,7 @@ public class Api implements Serializable {
     private Type monType;
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name="idCategory", nullable = false)
     private Category apiCategory;
 

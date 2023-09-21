@@ -18,9 +18,10 @@ public class Consumer extends Organization{
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     Long idConsumer;
 
+    @Column
     private String activitySector;
 
-    @OneToMany(mappedBy = "monApi")
+    @OneToMany(mappedBy = "monConsumer")
     private List<Affectation> listAffectation= new ArrayList<Affectation>();
 
 

@@ -27,7 +27,7 @@ public class Affectation {
 
     @ManyToOne
     @JoinColumn(name="idConsumer")
-    private Consumer consumer;
+    private Consumer monConsumer;
 
     @CreatedDate
     LocalDate date = LocalDate.now(ZoneId.of("Europe/Paris"));
