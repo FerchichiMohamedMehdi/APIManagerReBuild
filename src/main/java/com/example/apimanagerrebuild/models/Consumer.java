@@ -1,8 +1,8 @@
 package com.example.apimanagerrebuild.models;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -12,7 +12,14 @@ import java.util.List;
 @Setter
 @Data
 @Table(name="consumer")
+@AllArgsConstructor
+@NoArgsConstructor
 public class Consumer extends Organization{
+
+    @JsonCreator
+    public Consumer(@JsonProperty("idConsumer") Long idConsumer) {
+        this.idConsumer = idConsumer;
+    }
 
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -23,6 +30,8 @@ public class Consumer extends Organization{
 
     @OneToMany(mappedBy = "monConsumer")
     private List<Affectation> listAffectation= new ArrayList<Affectation>();
+
+
 
 
 

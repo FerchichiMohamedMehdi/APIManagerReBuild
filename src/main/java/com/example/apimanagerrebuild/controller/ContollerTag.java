@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 
 @RequestMapping("tag")
 @RestController
@@ -16,12 +17,15 @@ public class ContollerTag {
     @Autowired
     TagService tagService;
 
-    @GetMapping("List")
+    @GetMapping("/List")
     public List<Tag> getAllTags() {
         return tagService.getAllTag();
     }
 
-
+    @GetMapping("/occurence")
+    public Map<String, Integer> getOccurence(){
+        return tagService.getTagOccurence();
+    }
 
 
 }

@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 
@@ -44,7 +47,7 @@ public class Api {
     @ElementCollection(targetClass = Method.class)
     @CollectionTable(name = "api_method" , joinColumns = @JoinColumn(name ="idApi"))
     @Column(name = "method")
-    private Set<Method> methodApi;
+    private Set<Method> mesMethod;
 
     @Embedded
     @Enumerated(EnumType.STRING)
@@ -64,5 +67,11 @@ public class Api {
 
     @OneToMany(mappedBy = "monApi")
     private List<Tag> mesTag = new ArrayList<>();
+
+
+    @JsonCreator
+    public Api(@JsonProperty("idApi") Long idApi) {
+        this.idApi = idApi;
+    }
 
 }

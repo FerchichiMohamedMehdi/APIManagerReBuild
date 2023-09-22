@@ -16,18 +16,23 @@ public class TagService {
     @Autowired
     TagRepository tagRepository;
 
+    public Tag getByName(String name){
+        return tagRepository.findByNameTag(name);
+
+    }
+
+    public Tag getTagById(Long id){
+
+        return tagRepository.findById(id).get();
+    }
+
     public List<Tag> getAllTag(){
-        List<Tag> tags = new ArrayList<>();
-        tags= tagRepository.findAll();
-
-        return tags;
-
+        List<Tag> listTags = new ArrayList<>();
+        listTags = tagRepository.findAll();
+        return listTags;
     }
 
-    public HashMap<String, Integer> occurence(){
 
-        return null;
-    }
     public void addTag(Tag tagToAdd){
         tagRepository.save(tagToAdd);
     }

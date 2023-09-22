@@ -1,5 +1,7 @@
 package com.example.apimanagerrebuild.models;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,4 +22,9 @@ public class Provider extends Organization {
 
     @OneToMany(mappedBy = "apiProvider")
     private List<Api> listApiProvided = new ArrayList<Api>();
+
+    @JsonCreator
+    public Provider(@JsonProperty("idProvider") Long idProvider) {
+        this.idProvider = idProvider;
+    }
 }

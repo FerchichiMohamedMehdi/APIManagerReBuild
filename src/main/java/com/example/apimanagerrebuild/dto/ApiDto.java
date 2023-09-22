@@ -24,7 +24,7 @@ public class ApiDto {
 
     private LocalDate creationDate;
 
-    private Method methods;
+    private Set<Method> methods;
 
     private State apiState;
 
@@ -48,7 +48,7 @@ public class ApiDto {
         ApiDto.setNameApi(api.getName());
         ApiDto.setVersion(api.getVersion());
         ApiDto.setCreationDate(api.getDate());
-        ApiDto.setMethods(api.getMethodApi());
+        ApiDto.setMethods(api.getMesMethod());
         ApiDto.setApiState(api.getApiState());
         ApiDto.setApiType(api.getMonType().toString());
         ApiDto.setApiProvider(api.getApiProvider().getName());
