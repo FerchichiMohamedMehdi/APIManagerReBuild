@@ -22,8 +22,9 @@ public class ContollerTag {
         return tagService.getAllTag();
     }
 
+    //return HashMAp with both id Tag and occurence as key and value
     @GetMapping("/occurence")
-    public Map<String, Integer> getOccurence(){
+    public Map<String, Integer> getAllOccurence(){
         return tagService.getTagOccurence();
     }
 
@@ -32,6 +33,8 @@ public class ContollerTag {
     public void addTag(@RequestBody Tag t){
         tagService.addTag(t);
     }
+
+    //return the occurence of a given tag' name
     @GetMapping("/getOccurence/{name}")
     public int getOccurence(@PathVariable("name") String name){
         return  tagService.getOccurence(name);
