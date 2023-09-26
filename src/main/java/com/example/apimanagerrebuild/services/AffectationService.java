@@ -10,9 +10,11 @@ public class AffectationService {
     @Autowired
     AffectationRepository affectationRepository;
 
+    //add Affectation
     public void addAffectation(Affectation a){
         affectationRepository.save(a);
     }
+    // deleting Affectation by id
     public void deleteAffectationById(Long id){
         affectationRepository.deleteById(id);
     }

@@ -31,12 +31,14 @@ public class CategoryService {
     }
 
 
+    // getting a list of all categories
     public List<Category> listAll(){
         List listCat = new ArrayList<Category>();
         listCat=catRepo.findAll();
         return listCat;
     }
 
+    //update category with passing a category on parameter
     /*public void updateCat(Category c){
         Category catUpdated = new Category(c.getIdCategory(), c.getDescription(), c.getNameCategory(), c.getListApi());
         catRepo.save(c);
