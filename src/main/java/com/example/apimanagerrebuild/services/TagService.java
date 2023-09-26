@@ -37,6 +37,7 @@ public class TagService {
         tagRepository.save(tagToAdd);
     }
 
+    //method to get occurence fo a given tag's name
     public int getOccurence(String name) {
         List<Tag> tags = this.getAllTag();
         int i = 0;
@@ -47,6 +48,8 @@ public class TagService {
         }
         return i;
     }
+
+    //method to get a Map with both occurence with the tag's name
     public Map<String , Integer> getTagOccurence(){
         Map<String , Integer> tagsOccurence = new HashMap<>();
         List<Tag> tags = this.getAllTag();
