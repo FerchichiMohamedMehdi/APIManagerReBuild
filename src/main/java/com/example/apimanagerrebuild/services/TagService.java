@@ -16,15 +16,15 @@ public class TagService {
     @Autowired
     TagRepository tagRepository;
 
-    public Tag getByName(String name){
+    /*public Tag getByName(String name){
         return tagRepository.findByNameTag(name);
 
-    }
+    }*/
 
-    public Tag getTagById(Long id){
+    /*public Tag getTagById(Long id){
 
         return tagRepository.findById(id).get();
-    }
+    }*/
 
     public List<Tag> getAllTag(){
         List<Tag> listTags = new ArrayList<>();

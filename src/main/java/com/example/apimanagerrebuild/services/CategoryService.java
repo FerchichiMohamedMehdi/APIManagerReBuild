@@ -37,9 +37,9 @@ public class CategoryService {
         return listCat;
     }
 
-    public void updateCat(Category c){
+    /*public void updateCat(Category c){
         Category catUpdated = new Category(c.getIdCategory(), c.getDescription(), c.getNameCategory(), c.getListApi());
         catRepo.save(c);
-    }
+    }*/
 
 }
