@@ -5,6 +5,7 @@ import com.example.apimanagerrebuild.services.AffectationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+//TODO no need for the rest of the CRUD
 @RestController
 @RequestMapping("/affectation")
 public class AffectationController {
