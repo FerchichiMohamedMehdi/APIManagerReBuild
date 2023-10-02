@@ -23,6 +23,7 @@ import org.springframework.data.annotation.CreatedDate;
 @NoArgsConstructor
 public class Api {
 
+    //id auto generated
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idApi;

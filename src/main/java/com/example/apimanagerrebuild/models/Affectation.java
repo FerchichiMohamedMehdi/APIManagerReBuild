@@ -29,6 +29,8 @@ public class Affectation {
     @JoinColumn(name="idConsumer")
     private Consumer monConsumer;
 
+
+    //attribut for technical use with the annotation CreateDate
     @CreatedDate
     LocalDate date = LocalDate.now(ZoneId.of("Europe/Paris"));
 

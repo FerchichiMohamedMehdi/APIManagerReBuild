@@ -14,6 +14,7 @@ import java.util.List;
 @Table(name="consumer")
 @AllArgsConstructor
 @NoArgsConstructor
+//id provided with parent class OrganizationS
 public class Consumer extends Organization{
 
     @JsonCreator
