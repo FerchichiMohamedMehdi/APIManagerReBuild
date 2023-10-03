@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Set;
 
 @Data
-
+//TODO verify list attributs
 public class ApiDto {
 
     private Long idApi;
