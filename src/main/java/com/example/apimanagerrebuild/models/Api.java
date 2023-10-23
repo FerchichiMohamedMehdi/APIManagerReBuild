@@ -1,78 +1,105 @@
 package com.example.apimanagerrebuild.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-
-import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.*;
-import org.springframework.data.annotation.CreatedDate;
-
-@Entity
 @Data
-@Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Api {
 
-    //id auto generated
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idApi;
+@Entity
+@JsonIdentityInfo(generator=ObjectIdGenerators.IntSequenceGenerator.class, property="idApi")
+@Table(name ="API")
+public class Api implements Serializable {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long idApi;
+	private String nomApi;
+	private String description;
+	private String listFiles ;
+	private String url;
+	private String version;
+	private boolean isDefault;
+    @JsonFormat(pattern="yyyy-MM-dd") 
+    private Date dateVersion;
+	private Etat etat;
+ 
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name="idTypeApi")
+    public TypeApi type;
+  
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "idIntervenant")
+	public Intervenant fournisseur;
+	
+   
+    
 
-    private String name;
+  @OneToMany(targetEntity = Ressources.class,mappedBy = "api",cascade = CascadeType.MERGE)
+    public List<Ressources> resources = new ArrayList<>();
+    
+	@OneToMany(mappedBy = "api",cascade = CascadeType.ALL)
+	private List<Api_Tag> tags = new ArrayList<>();
 
-    private String description;
+	/*@OneToMany(targetEntity = Affectation.class,mappedBy = "api",cascade = CascadeType.ALL)
+    public List<Affectation> affectations;*/
 
-    private float version;
+	  @ManyToOne(fetch = FetchType.EAGER, optional = false)
+	    @JoinColumn(name = "idCategorie")
+	public Categorie categorie ;
+    
+    
 
-    private boolean isDefault;
-
-    @CreatedDate
-    @NonNull
-    LocalDate date = LocalDate.now(ZoneId.of("Europe/Paris"));
-
-    @Enumerated(EnumType.STRING)
-    @Embedded
-    private State apiState;
-
-    @Enumerated(EnumType.STRING)
-    @ElementCollection(targetClass = Method.class)
-    @CollectionTable(name = "api_method" , joinColumns = @JoinColumn(name ="idApi"))
-    @Column(name = "method")
-    private Set<Method> mesMethod;
-
-    @Embedded
-    @Enumerated(EnumType.STRING)
-    private Type monType;
-
-
-    @ManyToOne
-    @JoinColumn(name="idCategory", nullable = false)
-    private Category apiCategory;
-
-    @ManyToOne
-    @JoinColumn(name="idProvider")
-    private Provider apiProvider;
-
-    @OneToMany(mappedBy = "monApi")
-    private List<Affectation> listAffectation= new ArrayList<Affectation>();
-
-    @OneToMany(mappedBy = "monApi")
-    private List<Tag> mesTag = new ArrayList<>();
+	 public void addTag(Tag tag) {
+	        Api_Tag apiTag = new Api_Tag(this, tag);
+	        tags.add(apiTag);
+	        tag.getApis().add(apiTag);
+	    }
+	 
+	 
+	    public void removeTag(Tag tag) {
+	        for (Iterator<Api_Tag> iterator = tags.iterator();
+	             iterator.hasNext(); ) {
+	            Api_Tag apiTag = iterator.next();
+	 
+	            if (apiTag.getApi().equals(this) &&
+	                    apiTag.getTags().equals(tag)) {
+	                iterator.remove();
+	                apiTag.getTags().getApis().remove(apiTag);
+	                apiTag.setApi(null);
+	                apiTag.setTags(null);
+	            }
+	        }}
 
 
-    @JsonCreator
-    public Api(@JsonProperty("idApi") Long idApi) {
-        this.idApi = idApi;
-    }
+		public Api(String nomApi, String description, String listFiles, String url, String version,
+				boolean isDefault, Date dateVersion, TypeApi type, Intervenant fournisseur, Etat etat,Categorie categorie) {
+		
+			this.nomApi = nomApi;
+			this.description = description;
+		
+			this.listFiles = listFiles;
+			this.url = url;
+			this.version = version;
+			this.isDefault = isDefault;
+			this.dateVersion = dateVersion;
+			this.type = type;
+			this.fournisseur = fournisseur;
+			this.etat = etat;
+			this.categorie = categorie;
+		}
 
+
+		
 }
