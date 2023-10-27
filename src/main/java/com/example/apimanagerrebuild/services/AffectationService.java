@@ -88,6 +88,7 @@ public class AffectationService {
 			cl.add(c);
 		   af.setClients(cl);
 		}
+		//à rectifier
 		af.setApi(aService.getApiById(afdto.idApi));
 		return af;
 	    
