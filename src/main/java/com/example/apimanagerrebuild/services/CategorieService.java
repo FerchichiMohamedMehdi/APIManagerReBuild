@@ -14,7 +14,7 @@ public class CategorieService {
 	@Autowired ModelMapper modelMapper;
 	@Autowired
 	CategorieRepository catRepo;
-	public Categorie AjoutModifierCategorie(Categorie c) {
+	public Categorie AjoutCategorie(Categorie c) {
 		catRepo.save(c);
 		return c;
 	}
